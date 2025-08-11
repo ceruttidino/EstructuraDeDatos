@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class TP01Executable : MonoBehaviour
 {
-    public SimpleList<int> fruits = new SimpleList<int>();
-    private int[] fruitsCollection = new int[5];
+    public SimpleList<string> fruits = new SimpleList<string>();
+    public ReadInput readInput;
+
     void Start()
     {
-        for (int i = 0; i < fruitsCollection.Length; i++)
-        {
-            fruitsCollection[i] = i;
-        }
+        
     }
 
     void Update()
@@ -21,12 +19,34 @@ public class TP01Executable : MonoBehaviour
 
     public void Add()
     {
-        fruits.Add(1);
+        if (!string.IsNullOrEmpty(readInput.inputText))
+        {
+            fruits.Add(readInput.inputText);
+        }
+        else 
+        {
+            Debug.LogWarning("No se ingresó ningún texto en el InputField");
+        }
     }
 
     public void AddRange()
     {
-        fruits.AddRange(fruitsCollection);
+        if (!string.IsNullOrEmpty(readInput.inputText))
+        {
+            string[] fruitsRange = readInput.inputText.Split(',');
+
+            for (int i = 0; i < fruitsRange.Length; i++)
+            {
+                fruitsRange[i] = fruitsRange[i].Trim();
+            }
+
+            fruits.AddRange(fruitsRange);
+        }
+        else
+        {
+            Debug.LogWarning("No se ingresó ningún texto para AddRange");
+        }
+
     }
 
     public void Clear()
@@ -36,7 +56,14 @@ public class TP01Executable : MonoBehaviour
 
     public void Remove()
     {
-        fruits.Remove(1);
+        if (!string.IsNullOrEmpty(readInput.inputText))
+        {
+            fruits.Remove(readInput.inputText);
+        }
+        else
+        {
+            Debug.LogWarning("No se ingresó ningún texto en el InputField");
+        }
     }
 
 }
