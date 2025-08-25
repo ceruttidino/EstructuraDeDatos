@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MyLinkedList;
 using static UnityEngine.Rendering.DebugUI;
+using System;
 
 public class MyList<T>
 {
@@ -133,6 +134,20 @@ public class MyList<T>
         tail = current.Prev;
 
     Count--;
+    }
+
+    public T GetAt(int index)
+    {
+        if (index < 0 || index >= Count)
+        {
+            Debug.Log("Index out of range");
+        }
+
+        MyNode<T> current = root;
+        for (int i = 0; i < index; i++)
+            current = current.Next;
+
+        return current.Data;
     }
 
     public void Insert(int index, T value)
