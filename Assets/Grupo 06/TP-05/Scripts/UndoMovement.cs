@@ -6,7 +6,12 @@ using UnityEngine.Rendering;
 public class UndoMovement : MonoBehaviour
 {
     private MyStack<Vector3> positions = new MyStack<Vector3>();
-    
+
+    private void Start()
+    {
+        positions.Push(transform.position);
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.W))
