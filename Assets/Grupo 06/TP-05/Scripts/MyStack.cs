@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MyStack<T>
 {
-    private List<T> items = new List<T>();
+    private MyList<T> items = new MyList<T>();
 
     public int Count { get; private set; }
 
@@ -20,7 +20,7 @@ public class MyStack<T>
         {
             Debug.Log("Stack Vacio");
         }
-        T value = items[Count - 1];
+        T value = items.GetAt(Count - 1);
         items.RemoveAt(Count - 1);
         Count--;
         return value;
@@ -32,7 +32,7 @@ public class MyStack<T>
         {
             Debug.Log("Stack Vacio");
         }
-        return items[Count - 1];
+        return items.GetAt(Count - 1);
     }
 
     public void Clear()
@@ -47,7 +47,7 @@ public class MyStack<T>
 
         for (int i = 0; i < Count; i++)
         {
-            array[i] = items[Count - 1 - i];
+            array[i] = items.GetAt(Count - 1 - i);
         }
         return array;
     }
