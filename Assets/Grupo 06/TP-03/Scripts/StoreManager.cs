@@ -37,7 +37,7 @@ public class StoreManager : MonoBehaviour
 
                 store.items.Remove(itemID);
 
-                FindObjectOfType<StoreUI>().ShowStore();
+                FindObjectOfType<StoreUI>().ShowStore(store.SortItems("id"));
                 FindObjectOfType<InventoryUI>().ShowInventory();
                 FindObjectOfType<MoneyUI>().UpdateMoneyUI();
             }
@@ -69,7 +69,7 @@ public class StoreManager : MonoBehaviour
             }
 
             FindObjectOfType<InventoryUI>().ShowInventory();
-            FindObjectOfType<StoreUI>().ShowStore();
+            FindObjectOfType<StoreUI>().ShowStore(store.SortItems("id"));
             FindObjectOfType<MoneyUI>().UpdateMoneyUI();
 
             Debug.Log("You sold: " + item.name);
