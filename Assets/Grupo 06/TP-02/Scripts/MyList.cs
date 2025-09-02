@@ -225,7 +225,7 @@ public class MyList<T>
 
     public void BubbleSort(Comparison<T> comparison)
     {
-        if (Count < 2) return; // si hay menos de 2 elementos, no hace falta ordenar
+        if (Count < 2) return;
 
         bool swapped;
         do
@@ -236,7 +236,7 @@ public class MyList<T>
             {
                 if (comparison(current.Data, current.Next.Data) > 0)
                 {
-                    // intercambiar valores
+                    
                     T temp = current.Data;
                     current.Data = current.Next.Data;
                     current.Next.Data = temp;
@@ -244,44 +244,44 @@ public class MyList<T>
                 }
                 current = current.Next;
             }
-        } while (swapped); // repetir hasta que no haya intercambios
+        } while (swapped);
     }
 
     public void SelectionSort(Comparison<T> comparison)
     {
-        if (Count < 2) return; // si hay menos de 2 elementos, no hace falta ordenar
+        if (Count < 2) return;
 
-        MyNode<T> current = root;//empieza en el primer nodo
+        MyNode<T> current = root;
 
         while (current != null)
         {
-            MyNode<T> minNode = current;//el nodo actual es el minimo
-            MyNode<T> next = current.Next;//recorre los nodos siguientes
+            MyNode<T> minNode = current;
+            MyNode<T> next = current.Next;
 
-            //busca el nodo con el valor minimo
+            
             while (next != null)
             {
                 if (comparison(next.Data, minNode.Data) < 0)
                 {
-                    minNode = next;//ecuentra un nuevo minimo
+                    minNode = next;
                 }
                 next = next.Next;
             }
 
-            if (minNode != current)//intercambia los datos si encontramos un nodo menor
+            if (minNode != current)
             {
                 T temp = current.Data;
                 current.Data = minNode.Data;
                 minNode.Data = temp;
             }
 
-            current = current.Next;//avanza a siguiente nodo
+            current = current.Next;
         }
     }
 
     public void InsertionSort(Comparison<T> comparison)
     {
-        if (Count < 2) return;// si hay menos de 2 elementos, no hace falta ordenar
+        if (Count < 2) return;
 
         MyNode<T> current = root.Next;
         while (current != null)
@@ -289,7 +289,7 @@ public class MyList<T>
             T key = current.Data;
             MyNode<T> prev = current.Prev;
 
-            // mover los nodos mayores que key hacia la derecha
+            
             while (prev != null && comparison(prev.Data, key) > 0)
             {
                 prev.Next.Data = prev.Data;
@@ -297,9 +297,9 @@ public class MyList<T>
             }
 
             if (prev == null)
-                root.Data = key; // insertar al inicio
+                root.Data = key; 
             else
-                prev.Next.Data = key; // insertar en su posicion correcta
+                prev.Next.Data = key;
 
             current = current.Next;
         }

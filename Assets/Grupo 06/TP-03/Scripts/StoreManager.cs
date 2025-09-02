@@ -7,6 +7,7 @@ public class StoreManager : MonoBehaviour
 {
    private Store store;
    private PlayerInventory playerInventory;
+   private int discount = 10;
 
     void Awake()
     {
@@ -19,10 +20,11 @@ public class StoreManager : MonoBehaviour
         if (store.items.ContainsKey(itemID))
         {
             Item item = store.items[itemID];
+            int finalPrice = item.price - discount;
 
-            if (playerInventory.money >= item.price)
+            if (playerInventory.money >= finalPrice)
             {
-                playerInventory.money -= item.price;
+                playerInventory.money -= finalPrice;
 
                 if (playerInventory.inventory.ContainsKey(itemID))
                 {
@@ -33,7 +35,10 @@ public class StoreManager : MonoBehaviour
                     playerInventory.inventory.Add(itemID, (item, 1));
                 }
 
-                Debug.Log("You bought: " + item.name);
+                Debug.Log("You bought: " + item.name + " for " + finalPrice);
+
+                PlayerPrefs.SetInt("ItemPrice_" + itemID, finalPrice);
+                PlayerPrefs.Save();
 
                 store.items.Remove(itemID);
 
@@ -53,8 +58,9 @@ public class StoreManager : MonoBehaviour
         if (playerInventory.inventory.ContainsKey(itemID))
         {
             Item item = playerInventory.inventory[itemID].item;
+            int finalPrice = item.price / 2;
 
-            playerInventory.money += item.price;
+            playerInventory.money += finalPrice;
 
             playerInventory.inventory[itemID] = (item, playerInventory.inventory[itemID].quantity - 1);
 
@@ -68,11 +74,14 @@ public class StoreManager : MonoBehaviour
                 store.items.Add(itemID, item);
             }
 
+            PlayerPrefs.SetInt("ItemPrice_" + itemID, finalPrice);
+            PlayerPrefs.Save();
+
             FindObjectOfType<InventoryUI>().ShowInventory();
             FindObjectOfType<StoreUI>().ShowStore(store.SortItems("id"));
             FindObjectOfType<MoneyUI>().UpdateMoneyUI();
 
-            Debug.Log("You sold: " + item.name);
+            Debug.Log("You sold: " + item.name + " for " + finalPrice);
         }
         else
         {
