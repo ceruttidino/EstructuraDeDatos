@@ -23,40 +23,40 @@ public class Store : MonoBehaviour
         items.Add(armour.id, armour);
     }
 
-    public List<Item> SortItems(string criteria)// Metodo que devuelve una lista de items ordenada segun un criterio
+    public List<Item> SortItems(string criteria)
     {
-        List<Item> itemList = new List<Item>(items.Values);// Convertir los items del diccionario a una lista
+        List<Item> itemList = new List<Item>(items.Values);
 
         Comparison<Item> comparison;
 
-        switch (criteria.ToLower())// Definir la función de comparacion según el criterio
+        switch (criteria.ToLower())
         {
             case "id":
-                comparison = (a, b) => a.id.CompareTo(b.id);// Ordenar por ID
+                comparison = (a, b) => a.id.CompareTo(b.id);
                 break;
-            case "nombre":
-                comparison = (a, b) => a.name.CompareTo(b.name);// Ordenar por nombre
+            case "name":
+                comparison = (a, b) => a.name.CompareTo(b.name);
                 break;
-            case "precio":
-                comparison = (a, b) => a.price.CompareTo(b.price);// Ordenar por precio
+            case "price":
+                comparison = (a, b) => a.price.CompareTo(b.price);
                 break;
-            case "tipo":
-                comparison = (a, b) => a.type.CompareTo(b.type);// Ordenar por tipo
+            case "type":
+                comparison = (a, b) => a.type.CompareTo(b.type);
                 break;
-            case "rareza":
-                comparison = (a, b) => GetRarityValue(a.rarity).CompareTo(GetRarityValue(b.rarity));// Ordenar por rareza
+            case "rarity":
+                comparison = (a, b) => GetRarityValue(a.rarity).CompareTo(GetRarityValue(b.rarity));
                 break;
             default:
-                Debug.LogWarning("no se ordeno");
+                Debug.LogWarning("is not sort");
                 return itemList;
         }
 
-        SelectionSort(itemList, comparison);// Aplicar SelectionSort 
+        SelectionSort(itemList, comparison);
 
         return itemList;
     }
 
-    // SelectionSort
+    
     private void SelectionSort(List<Item> list, Comparison<Item> comparison)
     {
         int n = list.Count;
@@ -65,13 +65,13 @@ public class Store : MonoBehaviour
             int minIndex = i;
             for (int j = i + 1; j < n; j++)
             {
-                // Si el item en j es menor que el item en minIndex, actualizar minIndex
+                
                 if (comparison(list[j], list[minIndex]) < 0)
                 {
                     minIndex = j;
                 }
             }
-            // Intercambiar los items si encuentra uno menor
+            
             if (minIndex != i)
             {
                 Item temp = list[i];
@@ -81,7 +81,7 @@ public class Store : MonoBehaviour
         }
     }
 
-    //Rarezas para que no sea alfabetico
+    
     private int GetRarityValue(string rarity)
     {
         switch (rarity.ToLower())
@@ -89,7 +89,7 @@ public class Store : MonoBehaviour
             case "common": return 1;
             case "rare": return 2;
             case "exotic": return 3;
-            default: return 99;// Valor alto para rarezas desconocidas
+            default: return 99;
         }
     }
 }

@@ -13,40 +13,40 @@ public class StoreUI : MonoBehaviour
 
     void Start()
     {
-        ShowStore(store.SortItems("id")); // Mostrar inicialmente orden por ID
+        ShowStore(store.SortItems("id"));
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.N))
-            ShowStore(store.SortItems("nombre"));
+            ShowStore(store.SortItems("name"));
 
         if (Input.GetKeyDown(KeyCode.P))
-            ShowStore(store.SortItems("precio"));
+            ShowStore(store.SortItems("price"));
 
         if (Input.GetKeyDown(KeyCode.I))
             ShowStore(store.SortItems("id"));
 
         if (Input.GetKeyDown(KeyCode.R))
-            ShowStore(store.SortItems("rareza"));
+            ShowStore(store.SortItems("rarity"));
 
         if (Input.GetKeyDown(KeyCode.T))
-            ShowStore(store.SortItems("tipo"));
+            ShowStore(store.SortItems("type"));
     }
 
   
-    public void ShowStore(List<Item> itemList)  // Mostrar la lista de items en la UI
+    public void ShowStore(List<Item> itemList)
     {
-        // Limpiar contenido previo
+        
         foreach (Transform child in contentPanel)
             Destroy(child.gameObject);
 
-        // Crear botones para cada item
+        
         foreach (Item item in itemList)
         {
             GameObject newButton = Instantiate(itemButtonPrefab, contentPanel);
 
-            // Actualizar el texto y el icono del botón
+            
             newButton.transform.Find("ItemName").GetComponent<TextMeshProUGUI>().text = item.name;
             newButton.transform.Find("ItemPrice").GetComponent<TextMeshProUGUI>().text = "$" + item.price.ToString();
             newButton.transform.Find("Icon").GetComponent<Image>().sprite = item.icon;
