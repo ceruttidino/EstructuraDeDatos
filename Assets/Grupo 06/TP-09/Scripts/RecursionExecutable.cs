@@ -52,4 +52,52 @@ public class RecursionExecutable : MonoBehaviour
         int n = int.Parse(inputField.text);
         outputText.text = "Factorial de " + n + " = " + RecursionFact(n); 
     }
+
+
+    private int RecursionFib(int n)
+    {
+        if (n <= 1) return n;
+        return RecursionFib(n - 1) + RecursionFib(n - 2);
+
+    }
+
+    public void Fibonacci()
+    {
+        int n = int.Parse(inputField.text);
+        string result = "";
+        for (int i = 0; i < n; i++) 
+        {
+            result += RecursionFib(i) + " ";
+        }
+        outputText.text = "Fibonacci ("+ n +"): " + result;
+    }
+
+    private int RecursionSum(int n)
+    {
+        if(n <= 0) return 0;
+        return n + RecursionSum(n - 1);
+    }
+
+    public void Sumatoria()
+    {
+        int n = int.Parse(inputField.text);
+        outputText.text = "Suma de 1 a " + n + " = " + RecursionSum(n);
+    }
+
+    private string RecursionPyramid(int current, int max)
+    {
+        if (current > max) return "";
+
+        int xs = current * 2 - 1;
+        string line = $"<align=\"center\">{new string('x', xs)}</align>\n";
+
+        return line + RecursionPyramid(current + 1, max);
+    }
+
+
+    public void Pyramid()
+    {
+        int n = int.Parse (inputField.text);
+        outputText.text = RecursionPyramid(1, n);
+    }
 }
