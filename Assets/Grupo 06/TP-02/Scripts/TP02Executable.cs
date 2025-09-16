@@ -1,8 +1,9 @@
+using MyLinkedList;
+using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using MyLinkedList;
-using NUnit.Framework;
 using UnityEngine;
 
 public class TP02Executable : MonoBehaviour
@@ -111,5 +112,24 @@ public class TP02Executable : MonoBehaviour
     public void Clear()
     {
         vegetables.Clear(); 
+    }
+
+    public void Insert()
+    {
+        if (!string.IsNullOrEmpty(readInput.inputText))
+        {
+            string[] insertValues = readInput.inputText.Split(',');
+
+            if (int.TryParse(insertValues[0], out int number))
+            {
+                string word = insertValues[1];
+
+                vegetables.Insert(number, word);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No se ingresó ningún texto en el InputField");
+        }
     }
 }

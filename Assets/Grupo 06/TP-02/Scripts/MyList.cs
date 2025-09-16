@@ -155,6 +155,7 @@ public class MyList<T>
         if (index < 0 || index >= Count)
         {
             Debug.Log("Index out of range.");
+            return;
         }
 
         MyNode<T> newNode = new MyNode<T>(value);
