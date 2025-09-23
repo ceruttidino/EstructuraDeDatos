@@ -6,9 +6,9 @@ namespace MyLinkedList
 {
     public class MyNode<T>
     {
-        public T Data { get; set; } //data type
-        public MyNode<T> Next { get; set; } //next node
-        public MyNode<T> Prev { get; set; } //previous node
+        public T Data { get; set; }
+        public MyNode<T> Next { get; set; }
+        public MyNode<T> Prev { get; set; }
 
         public MyNode(T data)
         {

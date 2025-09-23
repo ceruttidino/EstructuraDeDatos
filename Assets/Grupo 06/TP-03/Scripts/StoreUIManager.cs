@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.VersionControl;
 
 public class StoreUI : MonoBehaviour
 {
@@ -10,31 +11,20 @@ public class StoreUI : MonoBehaviour
     public StoreManager storeManager;
     public Transform contentPanel;
     public GameObject itemButtonPrefab;
+    public TMP_Dropdown dropdown;
 
     void Start()
     {
         ShowStore(store.SortItems("id"));
+        dropdown.onValueChanged.AddListener(ChangeSort);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
-            ShowStore(store.SortItems("name"));
-
-        if (Input.GetKeyDown(KeyCode.P))
-            ShowStore(store.SortItems("price"));
-
-        if (Input.GetKeyDown(KeyCode.I))
-            ShowStore(store.SortItems("id"));
-
-        if (Input.GetKeyDown(KeyCode.R))
-            ShowStore(store.SortItems("rarity"));
-
-        if (Input.GetKeyDown(KeyCode.T))
-            ShowStore(store.SortItems("type"));
+        
     }
 
-  
+
     public void ShowStore(List<Item> itemList)
     {
         
@@ -53,6 +43,28 @@ public class StoreUI : MonoBehaviour
 
             int itemID = item.id;
             newButton.GetComponent<Button>().onClick.AddListener(() => storeManager.BuyItem(itemID));
+        }
+    }
+
+    void ChangeSort(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                ShowStore(store.SortItems("name"));
+                break;
+            case 1:
+                ShowStore(store.SortItems("price"));
+                break;
+            case 2:
+                ShowStore(store.SortItems("id"));
+                break;
+            case 3:
+                ShowStore(store.SortItems("rarity"));
+                break;
+            case 4:
+                ShowStore(store.SortItems("type"));
+                break;
         }
     }
 }

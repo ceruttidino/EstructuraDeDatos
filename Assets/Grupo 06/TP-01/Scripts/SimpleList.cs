@@ -65,15 +65,15 @@ public class SimpleList<T> : ISimpleList<T>
 
     public void BubbleSort(Comparison<T> comparison)
     {
-        if (count < 2) return;// si hay 0 o 1 elementos no hay que ordenar
+        if (count < 2) return;
 
-        for (int i = 0; i < count - 1; i++)//recore los elementos de la lista
+        for (int i = 0; i < count - 1; i++)
         {
-            for (int j = 0; j < count - i - 1; j++)//compara elementos
+            for (int j = 0; j < count - i - 1; j++)
             {
-                if (comparison(list[j], list[j + 1]) > 0)//si el elemento es mayor que el siguiente segun la comparacion
+                if (comparison(list[j], list[j + 1]) > 0)
                 {
-                    //intercambia los elementos
+                    
                     T temp = list[j];
                     list[j] = list[j + 1];
                     list[j + 1] = temp;
@@ -84,18 +84,18 @@ public class SimpleList<T> : ISimpleList<T>
 
     public void SelectionSort(Comparison<T> comparison)
     {
-        for (int i = 0; i < count - 1; i++)//recorre todos los elementos menos el ultimo
+        for (int i = 0; i < count - 1; i++)
         {
-            int minIndex = i;//el elemento actual es el mas chico 
+            int minIndex = i;
 
-            for (int j = i + 1; j < count; j++)//busca el elemento mas chico de la lista
+            for (int j = i + 1; j < count; j++)
             {
-                if (comparison(list[j], list[minIndex]) < 0)//si encuentra un elemento menor actualiza el min index
+                if (comparison(list[j], list[minIndex]) < 0)
                 {
                     minIndex = j;
                 }
             }
-            if (minIndex != i)//cambia el minimo
+            if (minIndex != i)
             {
                 T temp = list[i];
                 list[i] = list[minIndex];
@@ -106,19 +106,19 @@ public class SimpleList<T> : ISimpleList<T>
 
     public void InsertionSort(Comparison<T> comparison)
     {
-        for (int i = 1; i < count; i++) // empieza desde el segundo elemento
+        for (int i = 1; i < count; i++) 
         {
-            T key = list[i]; // elemento que tiene que insertar
+            T key = list[i];
             int j = i - 1;
 
-            // mover los elementos mayores que key una posicion a la derecha
+            
             while (j >= 0 && comparison(list[j], key) > 0)
             {
                 list[j + 1] = list[j];
                 j--;
             }
 
-            list[j + 1] = key; // insertar key en su posicion correcta
+            list[j + 1] = key;
         }
     }
 

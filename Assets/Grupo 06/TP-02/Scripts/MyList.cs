@@ -119,21 +119,21 @@ public class MyList<T>
         }
         
 
-    MyNode<T> current = root;
-    for (int i = 0; i < index; i++)
+        MyNode<T> current = root;
+        for (int i = 0; i < index; i++)
         current = current.Next;
 
-    if (current.Prev != null)
+        if (current.Prev != null)
         current.Prev.Next = current.Next;
-    else
+        else
         root = current.Next;
 
-    if (current.Next != null)
+        if (current.Next != null)
         current.Next.Prev = current.Prev;
-    else
+        else
         tail = current.Prev;
 
-    Count--;
+        Count--;
     }
 
     public T GetAt(int index)
@@ -237,7 +237,6 @@ public class MyList<T>
             {
                 if (comparison(current.Data, current.Next.Data) > 0)
                 {
-                    
                     T temp = current.Data;
                     current.Data = current.Next.Data;
                     current.Next.Data = temp;

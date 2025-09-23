@@ -89,7 +89,9 @@ public class RecursionExecutable : MonoBehaviour
         if (current > max) return "";
 
         int xs = current * 2 - 1;
-        string line = $"<align=\"center\">{new string('x', xs)}</align>\n";
+        int spaces = max - current;
+
+        string line = new string(' ', spaces) + new string('x', xs) + "\n";
 
         return line + RecursionPyramid(current + 1, max);
     }
