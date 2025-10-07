@@ -35,19 +35,8 @@ public class BSTExecutable : MonoBehaviour
         "PostOrder: " + GetTraversal(tree.root, "post") + "\n" +
         "LevelOrder: " + GetLevelOrder(tree);
 
-        CreateText($"Altura del árbol: {tree.GetHeight()}", new Vector2(-4, 4));
-
         DrawTree(tree.root, startPosition, 0);
 
-    }
-
-    void CreateText(string content, Vector2 pos)
-    {
-        GameObject go = new GameObject("UIText");
-        var text = go.AddComponent<TextMeshProUGUI>();
-        text.text = content;
-        text.fontSize = 4;
-        go.transform.position = pos;
     }
 
     void DrawTree(TreeNode<int> node, Vector2 position, int depth)
