@@ -67,19 +67,25 @@ public class AVLTree<T> : MyTree<T> where T : IComparable<T>
         int balance = GetBalance(node);
 
         if (balance > 1 && data.CompareTo(node.Left.Data) < 0)
+        {
             return RotateRight(node);
+        }
 
         if (balance < -1 && data.CompareTo(node.Right.Data) > 0)
+        {
             return RotateLeft(node);
+        }            
 
         if (balance > 1 && data.CompareTo(node.Left.Data) > 0)
         {
+            //cambiar a funcion
             node.Left = RotateLeft(node.Left);
             return RotateRight(node);
         }
 
         if (balance < -1 && data.CompareTo(node.Right.Data) < 0)
         {
+            //cambiar a funcion
             node.Right = RotateRight(node.Right);
             return RotateLeft(node);
         }
