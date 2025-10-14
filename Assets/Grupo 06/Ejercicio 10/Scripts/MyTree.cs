@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MyTree<T>
 {
-    public TreeNode<T> root { get; private set; }
+    public TreeNode<T> root { get; set; }
 
     public void Insert(T data)
     {

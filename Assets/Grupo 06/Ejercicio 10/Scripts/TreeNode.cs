@@ -6,6 +6,7 @@ public class TreeNode<T>
     public T Data;
     public TreeNode<T> Left;
     public TreeNode<T> Right;
+    public int Height;
 
     public TreeNode(T data)
     {
