@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 public class MySetList<T> : MySet<T>
@@ -40,5 +41,10 @@ public class MySetList<T> : MySet<T>
         foreach (var item in Elements)
             if (!other.Contains(item)) result.Add(item);
         return result;
+    }
+
+    public override void Show()
+    {
+        Console.WriteLine(ToString());
     }
 }

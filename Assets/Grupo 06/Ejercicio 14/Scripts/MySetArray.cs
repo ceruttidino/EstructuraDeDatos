@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Text;
 
 public class MySetArray<T> : MySet<T>
 {
@@ -60,5 +61,24 @@ public class MySetArray<T> : MySet<T>
         foreach (var item in Elements)
             if (!other.Contains(item)) result.Add(item);
         return result;
+    }
+
+    public override void Show()
+    {
+        Console.WriteLine(ToString());
+    }
+
+    public override string ToString()
+    {
+        if (count == 0) return "{ }";
+        var sb = new StringBuilder();
+        sb.Append("{ ");
+        for (int i = 0; i < count; i++)
+        {
+            sb.Append(items[i]);
+            if (i < count - 1) sb.Append(", ");
+        }
+        sb.Append(" }");
+        return sb.ToString();
     }
 }

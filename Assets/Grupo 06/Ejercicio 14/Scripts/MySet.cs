@@ -1,6 +1,5 @@
 
 using System;
-using Unity.VisualScripting;
 
 public abstract class MySet<T>
 {
@@ -17,13 +16,11 @@ public abstract class MySet<T>
     public abstract MySet<T> Intersect(MySet<T> other);
     public abstract MySet<T> Difference(MySet<T> other);
 
+    public abstract void Show();
+
     public override string ToString()
     {
         return string.Join(", ", Elements);
     }
-
-    public void Show()
-    {
-        Console.WriteLine(this.ToString());
-    }
+   
 }
