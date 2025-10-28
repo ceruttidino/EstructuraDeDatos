@@ -1426,10 +1426,27 @@ MonoBehaviour:
   - Tierra
   - Marte
   - Jupiter
+  - Saturno
+  - Urano
+  - Neptuno
+  - Venus
+  - Mercurio
   edges:
   - from: Tierra
     to: Marte
     weight: 10
+  - from: Marte
+    to: Jupiter
+    weight: 20
+  - from: Jupiter
+    to: Saturno
+    weight: 12
+  - from: Saturno
+    to: Urano
+    weight: 5
+  - from: Urano
+    to: Neptuno
+    weight: 8
 --- !u!4 &1403748821
 Transform:
   m_ObjectHideFlags: 0
