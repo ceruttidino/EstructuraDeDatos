@@ -29,7 +29,7 @@ public class MySetArray<T> : MySet<T>
         int index = Array.IndexOf(items, item, 0, count);
         if (index >= 0)
         {
-            items[index] = items[--count]; // reemplaza con el último
+            items[index] = items[--count];
             items[count] = default;
         }
     }

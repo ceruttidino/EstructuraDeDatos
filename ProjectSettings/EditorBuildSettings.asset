@@ -26,5 +26,17 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Grupo 06/TP-09/Scenes/TP-09.unity
     guid: 39f98ff68e7d7d841bfeeb9d593ad97d
+  - enabled: 1
+    path: Assets/Grupo 06/Ejercicio 10/Scenes/Ejercicio 10.unity
+    guid: c615a507dacf114439cc1848c9b4a8fa
+  - enabled: 1
+    path: Assets/Grupo 06/Ejercicio 12/Scenes/Ejercicio 12.unity
+    guid: 606780a09c512fe4bb0bfb1e3db1bebc
+  - enabled: 1
+    path: Assets/Grupo 06/Ejercicio 14/Scene/Ejercicio 15.unity
+    guid: 7ed35ceec9e2f564daee7b68ba77ea3e
+  - enabled: 1
+    path: Assets/Grupo 06/Ejercicio 16/Scenes/Ejercicio 16.unity
+    guid: a3e483d2ae7987e40aeb6f2361ca15a7
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
