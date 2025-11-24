@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,14 +9,21 @@ public class PlayerController : MonoBehaviour
     Coroutine travelRoutine;
 
     public void StartTraverse()
-    {
-        if(travelRoutine != null) StopCoroutine(travelRoutine);
+    {    
         var path = mazeChecker.GetLastPath();
-        if(path == null)
+
+        if (path == null || path.Count == 0)
         {
             Debug.Log("no path to travel");
             return;
         }
+
+        if (travelRoutine != null)
+        {
+            StopCoroutine(travelRoutine);
+            travelRoutine = null;
+        }
+
         travelRoutine = StartCoroutine(Traverse(path));
     }
 

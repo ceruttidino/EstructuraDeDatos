@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -102,8 +101,7 @@ public class PathFindingAStar : MonoBehaviour
                 var key = (nbTemplate.x, nbTemplate.y);
                 if (closed.Contains(key)) continue;
 
-                Node neighbor;
-                if (!allNodes.TryGetValue(key, out neighbor))
+                if (!allNodes.TryGetValue(key, out Node neighbor))
                 {
                     neighbor = new Node(nbTemplate.x, nbTemplate.y);
                     allNodes[key] = neighbor;
@@ -111,17 +109,20 @@ public class PathFindingAStar : MonoBehaviour
 
                 float tentativeG = current.g + 1f;
 
-                bool inOpen = open.Contains(neighbor);
-
                 if (tentativeG < neighbor.g)
                 {
                     neighbor.parent = current;
                     neighbor.g = tentativeG;
                     neighbor.f = tentativeG + Heuristic(neighbor.x, neighbor.y, ex, ey);
 
-                    if (!inOpen) open.Add(neighbor);
+                    if (open.Contains(neighbor))
+                    {
+                        open.Remove(neighbor);
+                    }
+                    open.Add(neighbor);
                 }
             }
+
 
         }
         return null;
