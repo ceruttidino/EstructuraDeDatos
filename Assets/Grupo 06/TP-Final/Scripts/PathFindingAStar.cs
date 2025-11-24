@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(GridManager))]
 public class PathFindingAStar : MonoBehaviour
 {
     GridManager gridManager;
 
     private void Awake()
     {
-        gridManager = GetComponent<GridManager>() ?? FindFirstObjectByType<GridManager>();
+        gridManager = GetComponent<GridManager>();
     }
 
     class Node
@@ -84,9 +85,9 @@ public class PathFindingAStar : MonoBehaviour
 
             closed[current.x, current.y] = true;
 
-            foreach (var nb in GetNeighbors(current.x, current.y))
+            foreach (var (x, y) in GetNeighbors(current.x, current.y))
             {
-                int nx = nb.x, ny = nb.y;
+                int nx = x, ny = y;
                 Node neighbor = nodes[nx, ny];
 
                 if (closed[nx, ny])
@@ -112,7 +113,7 @@ public class PathFindingAStar : MonoBehaviour
 
     List<Tile> ReconstructPath(Node endNode, GridManager gm)
     {
-        List<Tile> path = new List<Tile>();
+        List<Tile> path = new();
         Node n = endNode;
 
         while (n != null)

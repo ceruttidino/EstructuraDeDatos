@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PriorityQueue<T>
 {
@@ -15,7 +13,7 @@ public class PriorityQueue<T>
         }
     }
 
-    List<Node> heap = new List<Node>();
+    readonly List<Node> heap = new();
 
     public int Count => heap.Count;
 
@@ -77,8 +75,6 @@ public class PriorityQueue<T>
 
     public void Swap(int a, int b)
     {
-        var temp = heap[a];
-        heap[a] = heap[b];
-        heap[b] = temp;
+        (heap[b], heap[a]) = (heap[a], heap[b]);
     }
 }
