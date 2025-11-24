@@ -45,12 +45,6 @@ public class MazePainterUI : MonoBehaviour
             {
                 mazeChecker.SetStart(t);
             }
-            else
-            {
-                ClearType(TileType.Start);
-                t.SetType(TileType.Start);
-                if (mazeChecker != null) mazeChecker.MarkPainted();
-            }
             return;
 
         }
@@ -60,12 +54,6 @@ public class MazePainterUI : MonoBehaviour
             if (mazeChecker != null)
             {
                 mazeChecker.SetEnd(t); 
-            }
-            else
-            {
-                ClearType(TileType.End);
-                t.SetType(TileType.End);
-                if (mazeChecker != null) mazeChecker.MarkPainted();
             }
             return;
         }

@@ -21,7 +21,6 @@ public class Tile : MonoBehaviour
 
     void ApplyColor()
     {
-        if (sr == null) sr = GetComponent<SpriteRenderer>();
         switch (type)
         {
             case TileType.Floor: sr.color = Color.white; break;

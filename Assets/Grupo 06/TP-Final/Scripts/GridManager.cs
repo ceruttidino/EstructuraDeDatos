@@ -27,7 +27,6 @@ public class GridManager : MonoBehaviour
                 GameObject go = Instantiate(tilePrefab,pos,Quaternion.identity,transform);
                 Tile t = go.GetComponent<Tile>();
                 t.x = x; t.y = y;
-                t.SetType(TileType.Floor);
                 grid[x,y] = t;
             }
 

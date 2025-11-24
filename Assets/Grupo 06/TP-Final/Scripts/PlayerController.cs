@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
         if (travelRoutine != null)
         {
             StopCoroutine(travelRoutine);
-            travelRoutine = null;
         }
 
         travelRoutine = StartCoroutine(Traverse(path));
@@ -32,18 +31,16 @@ public class PlayerController : MonoBehaviour
         transform.position = path[0].transform.position;
         for (int i = 1; i < path.Count; i++)
         { 
-            Vector3 target = path[i].transform.position;
-            float t = 0f;
+            Vector3 target = path[i].transform.position;          
             Vector3 start = transform.position;
-            while(t < 1f)
+            float t = 0f;
+            while (t < 1f)
             {
                 t += Time.deltaTime / stepTime;
                 transform.position = Vector3.Lerp(start, target, t);
                 yield return null;
             }
             transform.position = target;
-            yield return null;
-
         }
         travelRoutine = null;
     }
