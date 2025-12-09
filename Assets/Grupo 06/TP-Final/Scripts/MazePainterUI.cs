@@ -26,7 +26,7 @@ public class MazePainterUI : MonoBehaviour
     public void SetSelection(int sel)
     {
         selection = (TileType)sel;
-        if(currentSelectionText) currentSelectionText.text = "Seleccion: " + selection.ToString();
+        if(currentSelectionText) currentSelectionText.text = selection.ToString();
     }
 
     public void PaintAt(Vector3 worldPos)
